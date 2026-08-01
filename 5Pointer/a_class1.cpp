@@ -1,25 +1,96 @@
-#include<iostream>
-using namespace std;
+#include <iostream>
+using namespace std ; 
 
-int main(){
-   int a = 5;
-int* ptr1 = &a ;
-// copying pointer into another 
-int* q = ptr1 ;
-
-char ch = 'a' ;
-char* ptr2 = &ch ;
-
-long l = 1040 ;
-long* ptr3 = &l ;
-
-
-
-cout<<"Value of a: " << *ptr1  << endl ; // value on that address
-cout<<"Address of a: " << ptr1 << endl  ; // address
-cout<<"Value of q: " << *q  << endl ; // value on that address
-cout<<"Address of q: " << q << endl  ; // address
-cout << "Size of ptr1: " << sizeof(ptr1) << endl ;//8
-cout << "Size of ptr2: " << sizeof(ptr2) << endl ;//1
-cout << "Size of ptr3: " << sizeof(ptr3) << endl ;
+int getFactorial(int n){
+    //Base case 
+    if (n==0 || n==1){
+    return 1 ;
+    }
+    //Recursive call 
+    return  n * getFactorial(n-1) ;
+    //Processing
 }
+
+int getPower(int n){
+    //Base case 
+    if (n==0){
+    return 1 ;
+    }
+    //Recursive call 
+    return  2 * getPower(n-1) ;
+    //Processing
+}
+
+void printReverseCounting(int n){
+    //Base case 
+    if (n==0){
+    return ;
+    }
+    //Processing
+    cout << n << " " ;
+    //Recursive call(TAIL RECURSION)
+    printReverseCounting(n-1) ;
+}
+
+int fib(int n){
+    //Base case 
+    // if (n==0){
+    // return 0 ;
+    // }
+    // if (n==1){
+    // return 1 ;
+    // } GENERALIZE KRO BHAI CODING KE BAACHE HO
+    if (n==0 || n==1){
+    return n ;
+    }
+    //Recursive call 
+    //fib(n) = fib(n-1) + fib (n-2)
+   return fib(n-1) + fib (n-2) ;
+    //Processing
+}
+        
+int SumN(int n){
+    //Base case 
+    if (n==0)
+    return 0 ;
+    //Recursive call 
+    return SumN(n-1) + n ;
+    //Processing 
+}
+
+void printCounting(int n){
+    //Base case
+    if(n==0){
+    return ;
+    }
+    //Recursive call(HEAD RECURSION) 
+    printCounting(n-1) ;
+    //Processing
+    cout << n << " " ;
+} 
+
+
+int main (){
+
+    int n ;
+    cout << "n: " ;
+    cin >> n ; 
+  
+    int ans = getFactorial(n) ;
+    cout << "Factorial of " << n << " is: " << ans  << endl ;
+
+    printReverseCounting(n) ;
+    cout << endl ;
+    printCounting(n) ;
+    cout << endl ;
+    int ans2 = getPower(n);
+    cout << "2 to the power " << n << " is: " << ans2  << endl ;
+
+    int ans3= fib(n) ;
+    cout << "the fibonachi series number at index " << n << " is: " << ans3 << endl ;
+
+    int ans4= SumN(n) ;
+    cout << "the fsum of  " << n << " numbers is: " << ans4 << endl ;
+
+return 0 ;
+} 
